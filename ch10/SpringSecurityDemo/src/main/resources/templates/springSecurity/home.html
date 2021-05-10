@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+<h1>hello 會員中心</h1>
+<p th:inline="text">Hello <span sec:authentication="name"></span></p>
+<p sec:authorize="hasRole('ROLE_ADMIN')">管理員</p>
+<p sec:authorize="hasRole('ROLE_USER')">普通使用者</p>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="登出">
+</form>
+</body>
+</html>

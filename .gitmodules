@@ -1,0 +1,3 @@
+[submodule "ch08/JpaArticleDemo"]
+	path = ch08/JpaArticleDemo
+	url = https://github.com/yue0910/JpaAritcleDemo.git
