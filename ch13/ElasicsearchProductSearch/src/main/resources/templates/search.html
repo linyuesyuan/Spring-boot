@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <div>
+        <span>搜尋詞：</span><span th:text="${key}">mav</span>
+        <div class="row-fluid">
+            <div class="span12">
+                <div th:each="item : ${page.content}">
+                    <table border="1">
+                        <tr>
+                            <td th:width="130" th:text="${item.id}">id</td>
+                            <td th:width="150" th:text="${item.name}">name</td>
+                            <td th:width="500" th:text="${item.body}">body</td>
+                        </tr>
+                    </table>
+<!--                    <span th:text="${item.id}">id</span>-->
+<!--                    <span th:text="${item.name}">name</span>-->
+<!--                    <span th:text="${item.body}">body</span>-->
+                </div>
+            </div>
+            <div>
+                <a th:href="@{/search(key=${key}, start=0)}">[首頁]</a>
+                <a th:if="${not page.isFirst()}" th:href="@{/search(key=${key}, start=${page.number-1})}">[上頁]</a>
+                <a th:if="${not page.isLast()}" th:href="@{/search(key=${key}, start=${page.number+1})}">[下頁]</a>
+                <a th:href="@{/search(key=${key}, start=${page.totalPages})}">[末頁]</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
